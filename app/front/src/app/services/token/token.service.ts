@@ -6,6 +6,7 @@ import { HttpService } from '../http/http.service';
 import { ErrorService } from '../error/error.service';
 import { CookieService } from '../cookie/cookie.service';
 import { environment } from '../../../environments/environment';
+import { Router } from '@angular/router';
 
 export interface I_Token {
 	created_at: number;
@@ -45,13 +46,13 @@ export class TokenService {
 	}
 
 	public login() {
-		window.location.href = `${environment.back_url}/api/auth/login42`;
+		window.location.href = `/api/auth/login42`;
 	}
 
 	public logout() {
 		const token = this.getToken();
 
-		window.location.href = `${environment.back_url}/api/auth/logout?refresh_token=${token?.refresh_token}`;
+		window.location.href = `/api/auth/logout?refresh_token=${token?.refresh_token}`;
 	}
 
 	public getTokenString() {

@@ -4,10 +4,6 @@ import { ValidationPipe } from '@nestjs/common';
 
 import { AppModule } from './app.module';
 
-/**
- * The function sets up a Nest.js application with global prefixes, global pipes for validation, and
- * body parsers, and then listens for incoming requests on port 3000.
- */
 async function bootstrap() {
 	const app = await NestFactory.create(AppModule);
 
