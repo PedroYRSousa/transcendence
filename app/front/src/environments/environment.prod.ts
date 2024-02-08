@@ -1,4 +1,4 @@
 export const environment = {
 	production: true,
-	back_url: 'https://transcendence-s8kk.onrender.com',
+	back_url: 'https://transcendence-jmb3.onrender.com',
 };
