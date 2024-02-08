@@ -1,0 +1,23 @@
+header {
+	mat-toolbar {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+
+		gap: 10px;
+
+		#actions {
+			display: flex;
+			flex-direction: row;
+
+			gap: 30px;
+		}
+
+		#mini-profile {
+			display: flex;
+			flex-direction: row;
+
+			gap: 10px;
+		}
+	}
+}

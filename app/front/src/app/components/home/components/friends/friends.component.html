@@ -1,0 +1,13 @@
+<div>
+	@if(users === null) { <mat-spinner></mat-spinner> }@else {
+	<div>
+		<mat-list id="list" role="list">
+			@for (user of users; track user.id) {
+			<mat-list-item class="list-item" role="listitem"><app-resume-profile (removeFriendCallback)="removeFriend($event)" [iAm]="iam" [user]="user" [showBackgroud]="true" /></mat-list-item>
+			} @empty {
+			<p>Não há usuários para mostrar</p>
+			}
+		</mat-list>
+	</div>
+	}
+</div>

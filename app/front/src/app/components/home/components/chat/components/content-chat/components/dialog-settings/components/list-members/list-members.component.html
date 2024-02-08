@@ -1,0 +1,30 @@
+<div id="content">
+	@if(members === null) {
+	<div id="spinner"><mat-spinner></mat-spinner></div>
+	} @else { @for (member of members; track member.id) { @if(member.id !== iam.id) {
+	<div class="member">
+		<img [src]="member.image ?? '/assets/default-user-icon.webp'" />
+		<div class="name-status">
+			<div class="name">{{ member.displayName }}</div>
+			<div class="status">{{ getStatus(member) }}</div>
+		</div>
+
+		<div class="options">
+			<button [disabled]="getDisabledAdminOptions(member)" mat-mini-fab color="primary" (click)="addRemoveAdmin(member)">
+				<mat-icon>{{ isAdmin(member) ? 'remove_moderator' : 'add_moderator' }}</mat-icon>
+			</button>
+			<button [disabled]="getDisabledRemoveMember(member)" mat-mini-fab color="primary" (click)="removeUser(member)">
+				<mat-icon>person_remove</mat-icon>
+			</button>
+			<button [disabled]="getDisabledKickMember(member)" mat-mini-fab color="primary" (click)="kickUnKickMember(member)">
+				<mat-icon>{{ isKick(member) ? 'check_circle' : 'cancel' }}</mat-icon>
+			</button>
+			<button [disabled]="getDisabledMuteMember(member)" mat-mini-fab color="primary" (click)="muteUnMuteMember(member)">
+				<mat-icon>{{ isMuted(member) ? 'record_voice_over' : 'voice_over_off' }}</mat-icon>
+			</button>
+		</div>
+	</div>
+	} } @empty {
+	<div id="empty">Não há membros</div>
+	} }
+</div>

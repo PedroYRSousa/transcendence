@@ -1,0 +1,30 @@
+<header>
+	<mat-toolbar color="basic">
+		<div id="actions">
+			<button [routerLink]="['/']" [color]="getColor('/')" mat-icon-button>
+				<mat-icon>home</mat-icon>
+				<label style="font-size: small">Home</label>
+			</button>
+			<button [routerLink]="['/game']" [color]="getColor('game')" mat-icon-button>
+				<mat-icon>gamepad</mat-icon>
+				<label style="font-size: small">Game</label>
+			</button>
+			<button [routerLink]="['/chat']" [color]="getColor('chat')" mat-icon-button>
+				<mat-icon>chat</mat-icon>
+				<label style="font-size: small">Chat</label>
+			</button>
+			<button [routerLink]="['/friends']" [color]="getColor('friends')" mat-icon-button>
+				<mat-icon>group</mat-icon>
+				<label style="font-size: small">Friends</label>
+			</button>
+		</div>
+		<div id="mini-profile">
+			@if(Iam === null) { <mat-spinner style="height: 40px" color="primary"></mat-spinner> }@else {
+			<app-resume-profile [user]="Iam" [isMy]="true" [onlyImage]="true" />
+			<button mat-icon-button (click)="logout()">
+				<mat-icon>logout</mat-icon>
+			</button>
+			}
+		</div>
+	</mat-toolbar>
+</header>

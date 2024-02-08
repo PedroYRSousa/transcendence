@@ -1,0 +1,11 @@
+@if (iam === null) {
+<mat-spinner color="primary"></mat-spinner>
+} @else {
+<div id="home">
+	<app-header></app-header>
+
+	<div id="content">
+		<router-outlet></router-outlet>
+	</div>
+</div>
+}

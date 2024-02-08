@@ -1,0 +1,7 @@
+<div id="content">
+	@for (content of chat.contents; track content.id) {
+	<app-message [content]="content" [iam]="iam" />
+	} @empty {
+	<p>Ainda não há menssagens</p>
+	}
+</div>

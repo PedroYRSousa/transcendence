@@ -1,0 +1,19 @@
+<div id="container">
+	@if(message !== null) {
+	<div id="message">
+		@for (m of message.split('\n'); track $index) {
+		<p>{{ m }}</p>
+		} @if(time !== null) {
+		<h1>{{ time }}</h1>
+		} @if (showSpinner) {
+		<div class="snippet" data-title="dot-windmill">
+			<div class="stage">
+				<div class="dot-windmill"></div>
+			</div>
+		</div>
+		}
+	</div>
+	}
+
+	<canvas #screen id="canvas"></canvas>
+</div>

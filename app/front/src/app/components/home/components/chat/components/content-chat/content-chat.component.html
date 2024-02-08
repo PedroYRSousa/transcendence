@@ -1,0 +1,22 @@
+<div id="content">
+	@if (loading) {
+	<div id="spinner"><mat-spinner></mat-spinner></div>
+	} @else if (!chat) {
+	<div id="not-to-display"><img [src]="catImage" /></div>
+	} @else {
+	<div id="display"><app-display [chat]="chat" [iam]="iam" /></div>
+
+	<div id="options">
+		<mat-form-field style="margin-bottom: -1.25em">
+			<mat-label>Mensagem</mat-label>
+			<input matInput [(ngModel)]="text" />
+			<button mat-icon-button matPrefix color="accent" (click)="openSettings()">
+				<mat-icon>settings</mat-icon>
+			</button>
+			<button mat-icon-button matSuffix color="accent" (click)="sendMessage()">
+				<mat-icon>send</mat-icon>
+			</button>
+		</mat-form-field>
+	</div>
+	}
+</div>

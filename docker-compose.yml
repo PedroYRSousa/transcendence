@@ -1,0 +1,50 @@
+version: '3'
+
+services:
+  database:
+    image: postgres:latest
+    container_name: database
+    env_file:
+      - .env
+    ports:
+      - '5433:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - back_database_lan
+    restart: always
+
+  front:
+    image: node:latest
+    container_name: frontend
+    command: bash -c ". /project/code/build.sh"
+    volumes:
+      - ./app/front:/project/code
+      - front-build:/project/code/dist/front/browser # Compartilha o build do Front com o Back
+
+  back:
+    image: node:latest
+    depends_on:
+      - database
+      - front
+    container_name: backend
+    env_file:
+      - /app/back/.env
+    command: bash -c "/project/code/build.sh"
+    volumes:
+      - ./app/back:/project/code
+      - front-build:/project/front # Compartilha o build do Front com o Back
+    ports:
+      - '80:3000'
+    networks:
+      - back_database_lan
+    restart: always
+
+networks:
+  back_database_lan:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  front-build:

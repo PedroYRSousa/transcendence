@@ -1,0 +1,13 @@
+<mat-card>
+	<mat-card-content>
+		<h1>Pedido de amizade</h1>
+		<div>
+			<img mat-card-image [src]="invite.image ?? '/assets/default-user-icon.webp'" />
+			<p>{{ invite.displayName }}</p>
+		</div>
+	</mat-card-content>
+	<mat-card-actions>
+		<button mat-stroked-button color="accent" (click)="close(false)">Recusar</button>
+		<button mat-raised-button color="primary" (click)="close(true)">Aceitar</button>
+	</mat-card-actions>
+</mat-card>

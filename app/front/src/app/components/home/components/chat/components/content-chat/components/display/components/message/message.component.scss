@@ -1,0 +1,41 @@
+#content {
+	gap: 10px;
+	display: flex;
+
+	#name-text {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		background-color: rgba(0, 0, 0, 0.5);
+		color: powderblue;
+
+		#name {
+			padding: 15px 10px 10px 10px;
+		}
+
+		#text {
+			margin-top: 10px;
+			width: 100%;
+			height: fit-content;
+			padding-left: 20px;
+			padding-right: 20px;
+			padding-bottom: 15px;
+		}
+	}
+}
+
+.system {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 30px;
+	background-color: rgba(0, 0, 0, 0.5);
+	color: white;
+	justify-content: center;
+	align-items: center;
+}
+
+.iam {
+	display: flex;
+	flex-direction: row-reverse;
+}

@@ -1,0 +1,44 @@
+<div id="container">
+	@if(message !== null) {
+	<div id="message">
+		@if(roomIDDisplay) {
+		<h2>{{ roomIDDisplay }}</h2>
+		} @if(roomLinkDisplay) {
+		<h3>{{ roomLinkDisplay }}</h3>
+		} @for (m of message.split('\n'); track $index) {
+		<p>{{ m }}</p>
+		} @if(time !== null) {
+		<h1>{{ time }}</h1>
+		} @if (showSpinner) {
+		<div class="snippet" data-title="dot-windmill">
+			<div class="stage">
+				<div class="dot-windmill"></div>
+			</div>
+		</div>
+		}
+	</div>
+	}
+	<div id="menu">
+		@if(menu === 'play') {
+		<button mat-raised-button color="primary" (click)="toMMMenu()">Matchmaking</button>
+		<button mat-raised-button color="primary" (click)="toCreateGameMenu()">Criar Sala</button>
+		<button mat-raised-button color="warn" (click)="toEnterMenu(true)">Entrar Sala</button>
+		} @else if(menu === 'enterPlay' || menu === 'enterWatch') {
+		<mat-form-field>
+			<mat-label>Id da sala</mat-label>
+			<input required matInput [(ngModel)]="inputRoomID" />
+		</mat-form-field>
+		<button mat-raised-button color="primary" (click)="enterGame(menu === 'enterPlay')">Entrar</button>
+		} @else if(menu === 'mm' || menu === 'createGame') {
+		<button mat-raised-button color="primary" (click)="createGame(false, menu === 'mm')">Jogo normal</button>
+		<button mat-raised-button color="primary" (click)="createGame(true, menu === 'mm')">Jogo alternativo</button>
+		} @else if(menu === 'watch') {
+		<button mat-raised-button color="primary" (click)="watchRandomGame()">Sala Pública</button>
+		<button mat-raised-button color="primary" (click)="toEnterMenu(false)">Sala Privada</button>
+		} @else {
+		<button mat-raised-button color="warn" (click)="toPlayMenu()">Jogar</button>
+		} @if (menu !== 'main') {
+		<button mat-raised-button color="accent" (click)="toMainMenu()">Voltar</button>
+		}
+	</div>
+</div>

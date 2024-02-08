@@ -1,0 +1,7 @@
+<div id="content">
+	@if (iam) {
+	<app-list-chat [iam]="iam" (getChat)="getChat($event)"></app-list-chat>
+
+	<app-content-chat [iam]="iam" [chat]="selectedChat" [loading]="loading"></app-content-chat>
+	} @else { <mat-spinner></mat-spinner> }
+</div>

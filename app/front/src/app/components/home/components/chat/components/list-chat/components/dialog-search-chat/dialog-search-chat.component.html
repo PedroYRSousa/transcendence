@@ -1,0 +1,41 @@
+<mat-card>
+	<mat-card-content>
+		<div id="spinner-overlay" [style.display]="loading ? 'flex' : 'none'"><mat-spinner></mat-spinner></div>
+		<h1>Encontre um chat</h1>
+		<div id="content">
+			@if(chats) {
+			<div id="list">
+				@for (chat of chats; track chat.id) {
+				<div [class]="selectedChat && selectedChat.id === chat.id ? 'selected item' : 'item'">
+					<app-list-item [showProtected]="true" [chat]="chat" (selectChat)="selectChat($event)" />
+				</div>
+				} @empty {
+				<p>Não há chats públicos</p>
+				}
+			</div>
+
+			<div id="inputs">
+				@if(selectedChat === null) {
+				<mat-form-field style="margin-bottom: -1.25em">
+					<mat-label>Nome</mat-label>
+					<input required matInput type="text" [(ngModel)]="name" />
+				</mat-form-field>
+				} @if(selectedChat === null || selectedChat !== null && selectedChat.protected) {
+				<mat-form-field style="margin-bottom: -1.25em">
+					<mat-label>Senha</mat-label>
+					<input matInput [type]="showPassword ? 'text' : 'password'" [(ngModel)]="password" />
+					<button matSuffix mat-icon-button (click)="this.showPassword = !this.showPassword">
+						<mat-icon>{{ showPassword ? 'visibility' : 'visibility_off' }}</mat-icon>
+					</button>
+				</mat-form-field>
+				}
+			</div>
+			} @else {
+			<div id="spinner"><mat-spinner></mat-spinner></div>
+			}
+		</div>
+	</mat-card-content>
+	<mat-card-actions>
+		<button mat-raised-button color="primary" [disabled]="selectedChat === null && name === ''" (click)="enter()">Entrar</button>
+	</mat-card-actions>
+</mat-card>

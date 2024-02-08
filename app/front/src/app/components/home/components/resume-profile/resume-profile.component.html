@@ -1,0 +1,47 @@
+<div [matMenuTriggerFor]="menu" [class]="!showBackgroud ? '' : 'display' + ' ' + getStatus()">
+	<button color="primary" mat-icon-button>
+		<img [src]="user.image ?? '/assets/default-user-icon.webp'" />
+	</button>
+	@if(!onlyImage) {
+	<label>
+		{{ user.displayName }}
+	</label>
+	}
+</div>
+
+<mat-menu #menu="matMenu">
+	<button mat-menu-item [routerLink]="'/profile/' + user.id">
+		<mat-icon>person</mat-icon>
+		<span>Abrir perfil</span>
+	</button>
+	@if (isMy) {
+	<button mat-menu-item [routerLink]="'/profile'">
+		<mat-icon>person</mat-icon>
+		<span>Editar perfil</span>
+	</button>
+	} @if (!isMy) { @if (!isBlocked()) {
+	<button mat-menu-item (click)="removeAddFriend()">
+		<mat-icon>{{ isFriend() ? 'person_remove' : 'person_add' }}</mat-icon>
+		<span>{{ isFriend() ? 'Remover' : 'Adicionar' }} amigo</span>
+	</button>
+	}
+	<button mat-menu-item (click)="blockUnblock()">
+		<mat-icon>{{ isBlocked() ? 'check' : 'block' }}</mat-icon>
+		<span>{{ isBlocked() ? 'Desbloquear' : 'Bloquear' }}</span>
+	</button>
+	@if(getStatus() !== 'offline' && !isBlocked()) { @if (!inChat) {
+	<button mat-menu-item (click)="sendMessage()">
+		<mat-icon>person</mat-icon>
+		<span>Enviar mensagem</span>
+	</button>
+	} @if(!inGame() && !isBlocked()) {
+	<button mat-menu-item (click)="chalenge(false)">
+		<mat-icon>transcribe</mat-icon>
+		<span>Desafiar (normal)</span>
+	</button>
+	<button mat-menu-item (click)="chalenge(true)">
+		<mat-icon>transcribe</mat-icon>
+		<span>Desafiar (alternativo)</span>
+	</button>
+	} } }
+</mat-menu>

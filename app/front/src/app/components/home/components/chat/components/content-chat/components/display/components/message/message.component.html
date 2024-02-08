@@ -1,0 +1,21 @@
+@if (content.author) {
+<div [className]="content.author.id === iam.id ? ' iam' : ''" id="content">
+	<app-resume-profile [inChat]="true" [iAm]="iam" [isMy]="content.author.id === iam.id" [onlyImage]="true" [user]="content.author" />
+	<div id="name-text">
+		<div [className]="content.author.id === iam.id ? ' iam' : ''" id="name">
+			{{ content.author.displayName }}
+		</div>
+		<div [className]="content.author.id === iam.id ? ' iam' : ''" id="text">
+			@if (isLink(Text)) {
+			<a [routerLink]="[content.text]">Convite</a>
+			} @else {
+			{{ Text }}
+			}
+		</div>
+	</div>
+</div>
+} @else {
+<div class="system">
+	{{ content.text }}
+</div>
+}

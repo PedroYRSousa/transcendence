@@ -1,0 +1,5 @@
+@if (this.toShowQRCode) {
+<app-generate-qrcode [closeDialog]="close" [nextDialog]="toGetSixDigits" />
+} @else {
+<app-get-six-digits [generateQRCode]="generateQRCode" [closeDialog]="toGenerateQrCode" [nextDialog]="close" [hashed_id]="hashed_id" />
+}

@@ -1,0 +1,19 @@
+<div id="container">
+	@if(loading){
+	<div id="spinner-overlay"><mat-spinner></mat-spinner></div>
+	} @if(iam === null) { <mat-spinner></mat-spinner> }@else {
+	<div id="user-info">
+		<div id="user-avatar" color="primary" mat-icon-button>
+			<img (click)="openFile()" [src]="fileSelectedUrl ?? iam.image ?? '/assets/default-user-icon.webp'" />
+		</div>
+		<mat-form-field appearance="fill">
+			<mat-label>Nome</mat-label>
+			<input matInput [(ngModel)]="iam.displayName" placeholder="Digite seu nome" />
+		</mat-form-field>
+		<button mat-raised-button [color]="iam.twoFactor ? 'warn' : 'basic'" (click)="iam.twoFactor ? deactivateTFA() : activeTFA()">
+			{{ iam.twoFactor ? 'Desativar TFA' : 'Ativar TFA' }}
+		</button>
+		<button mat-raised-button color="primary" (click)="saveChanges()">Salvar</button>
+	</div>
+	}
+</div>

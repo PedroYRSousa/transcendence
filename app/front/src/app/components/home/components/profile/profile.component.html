@@ -1,0 +1,85 @@
+@if(user === null) {
+<div class="spinner"><mat-spinner></mat-spinner></div>
+} @else {
+<div id="content">
+	<div id="profile">
+		<div id="content-image">
+			<svg [class]="'crown-image left top-ranking ' + getClassName(user)" viewBox="0 0 220 220" xml:space="preserve">
+				<path
+					d="M220,98.865c0-12.728-10.355-23.083-23.083-23.083s-23.083,10.355-23.083,23.083c0,5.79,2.148,11.084,5.681,15.14
+	l-23.862,21.89L125.22,73.002l17.787-20.892l-32.882-38.623L77.244,52.111l16.995,19.962l-30.216,63.464l-23.527-21.544
+	c3.528-4.055,5.671-9.344,5.671-15.128c0-12.728-10.355-23.083-23.083-23.083C10.355,75.782,0,86.137,0,98.865
+	c0,11.794,8.895,21.545,20.328,22.913l7.073,84.735H192.6l7.073-84.735C211.105,120.41,220,110.659,220,98.865z" />
+			</svg>
+			<button color="primary" mat-icon-button>
+				<img id="profile-image" [class]="'top-ranking ' + getClassName(user)" [src]="user.image ?? '/assets/default-user-icon.webp'" />
+			</button>
+			<svg [class]="'crown-image right top-ranking ' + getClassName(user)" viewBox="0 0 220 220" xml:space="preserve">
+				<path
+					d="M220,98.865c0-12.728-10.355-23.083-23.083-23.083s-23.083,10.355-23.083,23.083c0,5.79,2.148,11.084,5.681,15.14
+	l-23.862,21.89L125.22,73.002l17.787-20.892l-32.882-38.623L77.244,52.111l16.995,19.962l-30.216,63.464l-23.527-21.544
+	c3.528-4.055,5.671-9.344,5.671-15.128c0-12.728-10.355-23.083-23.083-23.083C10.355,75.782,0,86.137,0,98.865
+	c0,11.794,8.895,21.545,20.328,22.913l7.073,84.735H192.6l7.073-84.735C211.105,120.41,220,110.659,220,98.865z" />
+			</svg>
+		</div>
+		<label [class]="'top-ranking ' + getClassName(user)"> {{ '(' + user.ranking + 'º)    ' }}{{ user.displayName }} </label>
+	</div>
+	<div id="content-statistics">
+		<div id="leaderboard">
+			<h3>Leaderboard</h3>
+			<div id="leaderboard-display">
+				@for (user of users; track $index) {
+				<div [class]="'leaderboard-display-item' + getClassName(user)">
+					{{ user.ranking }}º {{ user.displayName }} @if(user.ranking <= 3){
+					<svg class="leaderboard-display-item-crown" viewBox="0 0 220 220" xml:space="preserve">
+						<path
+							d="M220,98.865c0-12.728-10.355-23.083-23.083-23.083s-23.083,10.355-23.083,23.083c0,5.79,2.148,11.084,5.681,15.14
+			l-23.862,21.89L125.22,73.002l17.787-20.892l-32.882-38.623L77.244,52.111l16.995,19.962l-30.216,63.464l-23.527-21.544
+			c3.528-4.055,5.671-9.344,5.671-15.128c0-12.728-10.355-23.083-23.083-23.083C10.355,75.782,0,86.137,0,98.865
+			c0,11.794,8.895,21.545,20.328,22.913l7.073,84.735H192.6l7.073-84.735C211.105,120.41,220,110.659,220,98.865z" />
+					</svg>
+					}
+				</div>
+				}
+			</div>
+		</div>
+		<div id="infos">
+			<h3>Minhas informações sobre partidas</h3>
+			<div id="infos-content">
+				<div class="infos-content-item">
+					<h4>Jogos</h4>
+					<h1>{{ getPlayGames(user) }}</h1>
+				</div>
+				<div class="infos-content-item">
+					<h4>Ganhas</h4>
+					<h1>{{ getWinnerGames(user) }}</h1>
+				</div>
+				<div class="infos-content-item">
+					<h4>Perdidas</h4>
+					<h1>{{ getLostGames(user) }}</h1>
+				</div>
+				<div class="infos-content-item">
+					<h4>Pontuação</h4>
+					<h1>{{ user.scoreGeral }}</h1>
+				</div>
+				<div class="infos-content-item">
+					<h4>Abandonadas</h4>
+					<h1>{{ getAbandonGames(user) }}</h1>
+				</div>
+				<div class="infos-content-item">
+					<h4>WO</h4>
+					<h1>{{ getWOGames(user) }}</h1>
+				</div>
+			</div>
+		</div>
+		<div id="history">
+			<h3>Historico</h3>
+			<div id="history-content">
+				@for (game of games; track $index) {
+				<div [class]="'history-content-item ' + getClassNameHistory(game)">{{ getNameOfPlayerForHistory(game) }}</div>
+				}
+			</div>
+		</div>
+	</div>
+</div>
+}

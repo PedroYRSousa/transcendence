@@ -1,0 +1,99 @@
+#spinner-overlay {
+	position: absolute;
+	z-index: 1000;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+mat-card {
+	color: white;
+	background-color: black;
+
+	mat-card-content {
+		#content {
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+
+			width: 200px;
+			gap: 15px;
+
+			#spinner {
+				width: 100%;
+				height: 100%;
+
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+
+			#list {
+				display: flex;
+				flex-direction: column;
+				gap: 5px;
+
+				width: 100%;
+				height: fit-content;
+				max-height: 250px;
+				overflow-y: auto;
+
+				cursor: pointer;
+
+				.item {
+					width: 100%;
+					height: 34px;
+
+					background-color: rgba(255, 255, 255, 0.25);
+
+					&:hover {
+						background-color: rgba(255, 255, 255, 0.5);
+					}
+
+					&.selected {
+						background-color: rgba(255, 255, 255, 0.75);
+					}
+				}
+
+				&::-webkit-scrollbar-track {
+					padding: 2px 0;
+					background-color: transparent;
+				}
+
+				&::-webkit-scrollbar {
+					width: 5px;
+				}
+
+				&::-webkit-scrollbar-thumb {
+					border-radius: 5px;
+					box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+					background-color: white;
+					border: 1px solid #000;
+				}
+			}
+
+			#inputs {
+				display: flex;
+				justify-content: center;
+				flex-direction: column;
+
+				gap: 5px;
+			}
+		}
+	}
+
+	mat-card-actions {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+
+		button {
+			width: 100%;
+		}
+	}
+}

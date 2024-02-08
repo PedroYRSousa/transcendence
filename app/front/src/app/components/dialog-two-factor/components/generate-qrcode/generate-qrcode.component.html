@@ -1,0 +1,10 @@
+<mat-card>
+	<mat-card-content>
+		<h1>Leia o QRcode</h1>
+		<div>@if(pathQRCode === null) { <mat-spinner></mat-spinner> }@else { <img mat-card-image [src]="pathQRCode" /> }</div>
+	</mat-card-content>
+	<mat-card-actions>
+		<button mat-stroked-button color="accent" (click)="close()">Sair</button>
+		<button mat-raised-button color="primary" (click)="next()">Continuar</button>
+	</mat-card-actions>
+</mat-card>

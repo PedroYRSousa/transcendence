@@ -1,0 +1,40 @@
+#spinner-overlay {
+	position: absolute;
+	z-index: 1000;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+mat-card {
+	color: white;
+	background-color: black;
+
+	mat-card-content {
+		div {
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+
+			gap: 10px;
+
+			width: 350px;
+			aspect-ratio: 1/1;
+		}
+	}
+
+	mat-card-actions {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+
+		button {
+			width: 100%;
+		}
+	}
+}

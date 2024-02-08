@@ -1,0 +1,5 @@
+<div id="container">
+	@if (game) { <app-canvas [interfaceGame]="game" [message]="message" [time]="time" [paused]="paused" [showSpinner]="showSpinner" /> } @else {
+	<app-menu (handleEnterGame)="enterGame($event)" (handleWatchGame)="watchGame($event)" (handleWatchRandomGame)="watchRandomGame()" [roomIDDisplay]="roomIDDisplay" [roomLinkDisplay]="roomLinkDisplay" [message]="message" [time]="time" [showSpinner]="showSpinner" />
+	}
+</div>

@@ -1,0 +1,64 @@
+#blocked {
+}
+#friend {
+}
+
+div {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+
+	cursor: pointer;
+
+	* {
+		cursor: pointer;
+	}
+
+	gap: 10px;
+
+	&.display {
+		padding-left: 10px;
+		background-color: rgba(0, 0, 0, 0.25);
+
+		&.online {
+			border-left: 15px solid green;
+		}
+
+		&.offline {
+			border-left: 15px solid gray;
+		}
+
+		&.busy {
+			border-left: 15px solid red;
+		}
+
+		&.blocked {
+			border-left: 15px solid black;
+		}
+
+		&.friend {
+			border-left: 15px solid pink;
+		}
+
+		&:hover {
+			transition: 0.5s;
+			background-color: rgba(0, 0, 0, 0.75);
+		}
+	}
+
+	button {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+
+		img {
+			width: 40px;
+			height: 40px;
+
+			object-fit: cover;
+
+			border-radius: 100%;
+		}
+	}
+}
